@@ -1,0 +1,115 @@
+README: Reference implementation of Naive Bayes Estimation algorithms
+Comments to Daniel Lowd (lowd at cs dot washington dot edu)
+
+This code is provided to accompany ``Naive Bayes Models for
+Probability Estimation'', by Daniel Lowd and Pedro Domingos,
+to appear in ICML 2005.  This document describes basic installation
+and usage.
+
+Outline:
+I.  LICENSE
+II.  Installation
+III. Usage
+  A.  Training
+  B.  Testing
+IV.  Notes
+
+
+I. LICENSE
+
+You are welcome to use the code under the terms of the modified BSD license
+for research or commercial purposes, however please acknowledge its use with a
+citation:
+
+Lowd, D. and Domingos, P. "Naive Bayes Models for Probability Estimation".
+To appear in ICML, 2005.  Bonn, Germany: ACM Press.
+
+If you like, please also drop us a line about what you do with NBE and what
+results you obtain.  See the LICENSE file for official license information.
+
+
+
+II. INSTALLATION
+
+On UNIX-like hosts (Linux, Mac OS X, etc.), just run:
+    make depend; make
+This code can also be built under Windows, using Cygwin.  It has not
+been tested with any other development environment.
+
+This should build the following four executables:
+   nbetrain   (for training models)
+   nbetest    (for computing avg. log likelihood)
+   nbesample  (for generating data -- not covered here)
+   nbequery   (for computing individual probabilities -- not covered here)
+
+
+III. USAGE
+
+A. Training
+
+nbetrain trains a model from data.  Basic usage is:
+   ./nbetrain [-i <initial clusters>] [-r <random seed>]
+       <training file> [hold-out file] <model file>
+
+For example, to train a model using our discretization of the Iris 
+Identification data set (from the UCI machine learning repository, 
+http://www.ics.uci.edu/~mlearn/MLRepository.html), run:
+    ./nbetrain iris-1.tune iris-1.hold <modelname>
+
+If no hold-out file is specified, nbetrain automatically creates
+one using the same methods as in the paper.  The advantage of specifying
+a hold-out file is more repeatable experiments.
+
+Each row of the input data consists of a list of attribute values, separated by
+spaces, surrounded by parenthesis.  Attribute values are 0-based indices.
+For example, in a domain with three attributes, each with 3 discrete values, 
+    (0 2 1)
+refers to an example with the first value of the first attribute, the third
+value of the second attribute, and the second value of the third attribute.
+(Continuous attributes are also supported, but are not described here.)
+
+The training algorithm will automatically infer the number of values for
+each attribute from the training data.  If you wish to specify it yourself, 
+create a schema file listing the number of values for each attribute.  
+For example, if you have 3 attributes, each with 3 values, the schema
+should look like:
+    (3 3 3)
+To use a schema with nbetrain, use the option: -s <schemafile>
+
+All settings used in our experiments are defaults in the training
+algorithm EXCEPT for the initial number of clusters and the random seed.
+The random seed can be set to 1 (as we did) using the option: -r 1
+
+The initial number of clusters can be specified using the option: 
+-i<numclusters>
+For small datasets, -i10 works better than -i50.
+
+
+
+B. Testing
+
+To compute the average log likelihood of test examples, run:
+    ./nbetest <model file> <test data>
+
+This displays both average log likelihood and the standard
+deviation.  This is the standard deviation of the mean,
+not the sample standard deviation.  Raw statistics can be
+obtained by adding the -v option.  This will yield
+the sum of all log likelihoods, the sum of all squared
+log likelihoods, and the number of examples considered.
+
+
+
+IV. SOURCE CODE
+
+The source code included evolved from a different mixture model,
+in which each component was referred to as an ``abstraction.''
+For this reason, much of the code still refers to abstractions,
+abstraction sets, etc.  These should simply be thought of as ``clusters.''
+
+The model is also artifically divided into an abstract base class
+(AbstractionSet) and much of the implementation (AbsVarAbstractionSet).
+There was a time when this division made sense, because there were
+more restrictive alternatives to AbsVarAbstractionSet.
+
+We intend to eventually rewrite the code so that it makes more sense. :)
