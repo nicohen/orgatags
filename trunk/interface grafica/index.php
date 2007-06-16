@@ -1,5 +1,5 @@
 <html>
-<title>Supervisor</title>
+<title>Lector de feeds RSS</title>
 
 <FRAMESET cols="15%,*" frameborder="0">
 

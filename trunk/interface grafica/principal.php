@@ -6,7 +6,7 @@
 function cargar_feed()
 {
 	alert(document.formu.feedURL.value);
-	window.parent.principal.location.href = 'cargar_feed.php?feed_url=' + document.formu.feedURL.value;
+	window.parent.principal.location.href = 'cargar_feed.php?feedurl=' + document.formu.feedURL.value;
 }
 function ocultar_mostrar(cual)
 {
@@ -53,7 +53,7 @@ function ocultar(cual)
 <br>
 <?
 // include_once("cargar_feed.php");
-//Si estoy cargando un feed
+//Los feeds que hay quye mostrar.(pedirlos por xmlrpc)
 if ( $feed )
 {
 	$feed = urldecode($feed);
@@ -85,7 +85,7 @@ else
 <?
 $paraOcultar = "ocultar('tabla1')";
 echo "<script language=\"javascript\">$paraOcultar;</script>"; ?>
-
+<p>http://www.clarin.com/diario/hoy/um/sumariorss.xml</p>
 </form>
 </body>
 </html>
