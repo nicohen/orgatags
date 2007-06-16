@@ -1,0 +1,56 @@
+.boton 
+{
+    BORDER-RIGHT: #0066ff 1px ridge;
+    BORDER-TOP: #0066ff 1px ridge;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    BORDER-LEFT: #0066ff 1px ridge;
+    COLOR: #ffffff;
+    BORDER-BOTTOM: #0066ff 1px ridge;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: #006599;
+}
+
+.botonSel 
+{
+    BORDER-RIGHT: #000000 1px groove;
+    BORDER-TOP: #000000 1px groove;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    BORDER-LEFT: #000000 1px groove;
+    COLOR: #FFFFFF;
+    BORDER-BOTTOM: #000000 1px groove;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: #0099cc;
+  }
+.letraNegra {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    color: #000000;
+  }
+.letraNegraMedia {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000000;
+  }
+.letraNegraChica {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bolder;
+    color: #000000;
+  }
+
+.letraNegraGrande {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #000000;
+  }
+.letraNegraFina
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000;
+    font-weight: normal;
+}
